@@ -3,6 +3,7 @@ from rest_framework.routers import DefaultRouter
 
 from .views import GroupsViewSet, CommentsViewSet, PostsViewSet, FollowsViewSet
 
+VERSION = 'v1'
 
 router = DefaultRouter()
 router.register(r'posts', PostsViewSet, basename='posts')
@@ -14,7 +15,7 @@ router.register(
 router.register(r'follow', FollowsViewSet, basename='follows')
 
 urlpatterns = [
-    path('', include(router.urls)),
-    path('', include('djoser.urls')),
-    path('', include('djoser.urls.jwt')),
+    path(f'{VERSION}/', include(router.urls)),
+    path(f'{VERSION}/', include('djoser.urls')),
+    path(f'{VERSION}/', include('djoser.urls.jwt')),
 ]
